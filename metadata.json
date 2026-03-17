@@ -1,0 +1,5 @@
+{
+  "name": "BSM Option Calculator",
+  "description": "A professional-grade European Option Price Calculator using the Black-Scholes-Merton model, featuring real-time Greeks calculation and interactive inputs.",
+  "requestFramePermissions": []
+}
