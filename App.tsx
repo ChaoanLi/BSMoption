@@ -238,9 +238,11 @@ const App: React.FC = () => {
     const K = parseFloat(strikePrice);
     const v = parseFloat(volatility) / 100;
     const r = parseFloat(riskFreeRate) / 100;
-    if (!isNaN(S) && !isNaN(K) && !isNaN(v) && !isNaN(r)) {
+    if ([S, K, v, r, timeToExpiry].every(Number.isFinite) && S > 0 && K > 0 && v > 0) {
       const p = { underlyingPrice: S, strikePrice: K, timeToExpiry, volatility: v, riskFreeRate: r, dividendYield: 0 };
       setResult(modelType === ModelType.American ? calculateAmericanOption(optionType, p) : calculateBSM(optionType, p));
+    } else {
+      setResult(null);
     }
   }, [underlyingPrice, strikePrice, volatility, riskFreeRate, timeToExpiry, optionType, modelType]);
 
