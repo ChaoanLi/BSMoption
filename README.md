@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# BSMoption · Option Pricing Calculator
 
-# Run and deploy your AI Studio app
+A React and TypeScript application for exploring European and American option prices.
 
-This contains everything you need to run your app locally.
+[Deployed application](https://bsm-option-calculator.vercel.app)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1rXraet_ZOdbcj6pEyJMGWEcJuNB2frgL
+## Features
 
-## Run Locally
+- European call and put pricing using the Black–Scholes–Merton model.
+- An American-option pricing implementation.
+- Inputs for the underlying price, strike, volatility, and evaluation and maturity dates.
+- Market-data requests through Vercel functions for expiries, strikes, options, and Treasury yields.
+- English and Chinese interface text.
 
-**Prerequisites:**  Node.js
+## Local development
 
+Install Node.js and npm, then run:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```sh
+git clone https://github.com/ChaoanLi/BSMoption.git
+cd BSMoption
+npm ci
+npm run dev
+```
+
+Open the local URL printed by Vite.
+
+```sh
+npm run build
+npm run preview
+```
+
+Vite serves the frontend locally. The `/api/*` endpoints are Vercel functions and require a compatible serverless runtime to run locally; the frontend development server alone does not run them. The app includes fallback yield-curve values when live yields are unavailable.
+
+## Repository structure
+
+| Location | Purpose |
+| --- | --- |
+| `App.tsx` | Application state, pricing flow, and market-data requests |
+| `components/` | Input controls and shared interface |
+| `utils/bsm.ts` | European option pricing |
+| `utils/american.ts` | American option pricing |
+| `utils/i18n.ts` | English and Chinese interface text |
+| `api/` | Serverless market-data endpoints |
+| `vercel.json` | Vercel routing configuration |
+
+## Deployment
+
+The repository includes a Vercel configuration. Deploy the frontend and `api/` functions together so market-data requests reach the corresponding serverless endpoints.
+
+Prices depend on the model inputs and the availability of external market data.
