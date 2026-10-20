@@ -61,3 +61,8 @@ The frontend build and TypeScript check were verified on 2026-10-20. Numerical
 smoke checks covered a standard call/put example, put-call parity, an implied-
 volatility round trip, expiry payoff, and the American/European comparison for
 positive volatility. Live market-data endpoints were not verified by those checks.
+
+## License
+
+The code is available under the [MIT License](LICENSE). External market data and
+third-party assets retain their original terms.
